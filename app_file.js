@@ -12,6 +12,8 @@ app.get('/topic/new', (req, res) => {
   res.render('new');
 });
 
+app.get('/topic', (req, res) => {});
+
 app.post('/topic', (req, res) => {
   const title = req.body.title;
   const description = req.body.description;
