@@ -12,7 +12,15 @@ app.get('/topic/new', (req, res) => {
   res.render('new');
 });
 
-app.get('/topic', (req, res) => {});
+app.get('/topic', (req, res) => {
+  fs.readdir('data', (err, files) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Internal Server Error');
+    }
+    res.render('view', { topics: files });
+  });
+});
 
 app.post('/topic', (req, res) => {
   const title = req.body.title;
