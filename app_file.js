@@ -12,6 +12,7 @@ app.get('/topic/new', (req, res) => {
   res.render('new');
 });
 
+// 먼저 코드를 작성하고 -> 리펙토링을 한다.
 app.get(['/topic', '/topic/:id'], (req, res) => {
   const id = req.params.id;
   fs.readdir('data', (err, files) => {
