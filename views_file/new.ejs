@@ -8,17 +8,29 @@
 </head>
 
 <body>
-    <form action="/topic" method="POST">
-        <p>
-            <input type="text" name="title" placeholder="title">
-        </p>
-        <p>
-            <textarea name="description" placeholder="description"></textarea>
-        </p>
-        <p>
-            <input type="submit">
-        </p>
-    </form>
+    <h1><a href="/topic" style="text-decoration: none;">Server Side JavaScript</a></h1>
+
+    <ul>
+        <% topics.forEach((topic)=> { %>
+            <li><a href="/topic/<%= topic %>">
+                    <%= topic %>
+                </a></li>
+            <% }) %>
+    </ul>
+    <article>
+        <form action="/topic" method="POST">
+            <p>
+                <input type="text" name="title" placeholder="title">
+            </p>
+            <p>
+                <textarea name="description" placeholder="description"></textarea>
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+        </form>
+    </article>
+
 </body>
 
 </html>

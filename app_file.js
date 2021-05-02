@@ -9,7 +9,13 @@ app.set('views', './views_file');
 app.set('view engine', 'ejs');
 
 app.get('/topic/new', (req, res) => {
-  res.render('new');
+  fs.readdir('data', (err, files) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Internal Server Error');
+    }
+    res.render('new', { topics: files });
+  });
 });
 
 // 먼저 코드를 작성하고 -> 리펙토링을 한다.
@@ -69,7 +75,7 @@ app.post('/topic', (req, res) => {
     if (err) {
       res.status(500).send('Internal Server Error');
     }
-    res.send('Success!');
+    res.redirect('/topic/' + titlen);
   });
 });
 
